@@ -10,4 +10,9 @@ public class FunRestController {
     public String sayHello() {
         return "Hello World!";
     }
+
+    @GetMapping("/hi")
+    public String sayHi() {
+        return "Hi!";
+    }
 }
