@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 /* @SpringBootApplication(
 		scanBasePackages = {"com.luv2code.sprintboot.demo.mycoolapp", "com.luv2code.util"}
 ) */
@@ -21,9 +23,43 @@ public class MyCoolAppApplication {
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
 //            createStudent(studentDAO);
-
-            createMultipleStudents(studentDAO);
+//            createMultipleStudents(studentDAO);
+//            readStudent(studentDAO);
+//            queryForStudents(studentDAO);
+            queryForStudentsByLastName(studentDAO);
         };
+    }
+
+    private void queryForStudentsByLastName(StudentDAO studentDAO) {
+        List<Student> theStudents = studentDAO.findByLastName("Duck");
+
+        for (Student tempStudent : theStudents) {
+            System.out.println(tempStudent);
+        }
+    }
+
+    private void queryForStudents(StudentDAO studentDAO) {
+
+        List<Student> theStudents = studentDAO.findAll();
+
+        for (Student tempStudent : theStudents) {
+            System.out.println(tempStudent);
+        }
+    }
+
+    private void readStudent(StudentDAO studentDAO) {
+        System.out.println("Creating new student object...");
+        Student tempStudent = new Student("Daffy", "Duck", "paul@luv2code.com");
+
+        System.out.println("Saving the student...");
+        studentDAO.save(tempStudent);
+
+        int tempStudentId = tempStudent.getId();
+        System.out.println("Saved student. Generated id:" + tempStudentId);
+
+        Student myStudent = studentDAO.findById(tempStudentId);
+
+        System.out.println("Found the student" + myStudent);
     }
 
     private void createMultipleStudents(StudentDAO studentDAO) {

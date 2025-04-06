@@ -3,23 +3,27 @@ package com.luv2code.sprintboot.demo.mycoolapp.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="student")
+@Table(name = "student")
 public class Student {
     // define fields
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private int id;
 
-    @Column(name="first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
+
+    // default constructor needed for JPA
+    public Student() {
+    }
 
     // define constructor
     public Student(String firstName, String lastName, String email) {
