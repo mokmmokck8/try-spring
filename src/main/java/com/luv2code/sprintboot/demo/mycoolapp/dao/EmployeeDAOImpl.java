@@ -34,7 +34,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public Employee save(Employee theEmployee) {
         // if id == 0 then insert/save else update
         Employee dbEmployee = entityManager.merge(theEmployee);
-        return dbEmployee;
+        return theEmployee;
     }
 
     @Override
