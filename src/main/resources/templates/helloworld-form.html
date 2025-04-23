@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- reference CSS file -->
+<link rel="stylesheet" th:href="@{/css/demo.css}"/>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Hello World - Input Form</title>
+</head>
+<body>
+<!-- if method is GET, the params may append in url as requestParams -> /processFormVersionThree?studentName=value1 -->
+<form method="GET" th:action="@{/processFormVersionThree}">
+    <label for="studentName">GET Method</label>
+    <input id="studentName" name="studentName" placeholder="What's your name?" type="text"/>
+    <input type="submit">
+</form>
+
+<form method="POST" th:action="@{/processFormVersionThree}">
+    <label for="studentName1">POST Method</label>
+    <input id="studentName1" name="studentName" placeholder="What's your name? " type="text"/>
+    <input type="submit">
+</form>
+</body>
+</html>

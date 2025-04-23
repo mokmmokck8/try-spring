@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Student Registration Form</title>
+</head>
+<body>
+<h3>Student Registration Form</h3>
+<form method="POST" th:action="@{/processStudentForm}" th:object="${student}">
+    <!-- *{...} is shortcut syntax for: ${student.firstName} -->
+    <!-- Spring MVC may read student form the model and call student.getFirstName() and student.getLastName() -->
+    First name: <input th:field="*{firstName}" type="text">
+    <br/>
+    Last name: <input th:field="*{lastName}" type="text">
+    <br/>
+    <!-- Spring MVC may call student.setFirstName() and student.setLastName() when submitted -->
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

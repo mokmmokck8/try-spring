@@ -2,7 +2,6 @@ package com.luv2code.sprintboot.demo.mycoolapp.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -54,13 +53,15 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.GET, "/api/employees").hasRole("EMPLOYEE")
-                        .requestMatchers(HttpMethod.GET, "/api/employees/**").hasRole("EMPLOYEE")
-                        .requestMatchers(HttpMethod.POST, "/api/employees").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.PUT, "/api/employees").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.PATCH, "/api/employees/**").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasRole("ADMIN")
+//                .authorizeHttpRequests(authorize -> authorize
+//                        .requestMatchers(HttpMethod.GET, "/api/employees").hasRole("EMPLOYEE")
+//                        .requestMatchers(HttpMethod.GET, "/api/employees/**").hasRole("EMPLOYEE")
+//                        .requestMatchers(HttpMethod.POST, "/api/employees").hasRole("MANAGER")
+//                        .requestMatchers(HttpMethod.PUT, "/api/employees").hasRole("MANAGER")
+//                        .requestMatchers(HttpMethod.PATCH, "/api/employees/**").hasRole("MANAGER")
+//                        .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasRole("ADMIN")
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll() // Allow all requests
                 ).httpBasic(Customizer.withDefaults());
 
         return http.build();
