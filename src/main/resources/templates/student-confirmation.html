@@ -10,7 +10,20 @@
 <body>
 <h3>Student confirmation Page</h3>
 
-The Student is confirmed: <span th:text="${student.firstName} +_' ' + ${student.lastName}"></span>
+The Student is confirmed: <span th:text="${student.firstName} + ' ' + ${student.lastName}"></span>
+<br/>
+Free passes: <span th:text="${student.freePasses}"></span>
+<br/>
+portal code: <span th:text="${student.postalCode}"></span>
+<br/>
+Your course code is:
+<span th:text="${student.courseCode}"></span> <br/>
+<!--Your country is: <span th:text="${student.country}"></span> <br/>-->
+<!--Your favorite language is: <span th:text="${student.favoriteLanguage}"></span> <br/>-->
+<!--Your favorite systems are:-->
+<!--<ul>-->
+<!--    <li th:each="tempSystem : ${student.favoriteSystems}" th:text="${tempSystem}"></li>-->
+<!--</ul>-->
 
 </body>
 </html>
